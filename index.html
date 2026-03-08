@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Tweet Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+        }
+        form {
+            margin-bottom: 30px;
+        }
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .results {
+            margin-top: 30px;
+        }
+        .tweets, .voice-summary {
+            margin-bottom: 20px;
+        }
+        .tweets h2, .voice-summary h2 {
+            color: #4CAF50;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background: #f9f9f9;
+            margin: 5px 0;
+            padding: 10px;
+            border-left: 5px solid #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 AI Tweet Generator</h1>
+        <form method="POST">
+            <label>🏷️ Brand Name</label>
+            <input type="text" name="brand_name" required>
+
+            <label>🏭 Industry</label>
+            <input type="text" name="industry" required>
+
+            <label>🎯 Campaign Objective</label>
+            <input type="text" name="objective" required>
+
+            <label>📦 Products</label>
+            <textarea name="products" rows="4" required></textarea>
+
+            <button type="submit">✨ Generate Tweets</button>
+        </form>
+
+        {% if result %}
+        <div class="results">
+            <div class="tweets">
+                <h2>📝 Generated Tweets</h2>
+                <ul>
+                    {% for tweet in result.tweets %}
+                    <li>{{ tweet }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="voice-summary">
+                <h2>🎤 Voice Summary</h2>
+                <ul>
+                    {% for summary in result.voice_summary %}
+                    <li>{{ summary }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
